@@ -1,0 +1,47 @@
+Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
+
+# Install Elasticsearch w/ Dependencies
+
+## Using Docker
+
+```
+cd es-docker
+docker build --tag=elasticsearch-tlre .
+./elasticsearch.sh
+```
+
+## Install Manually
+
+1. Download [Elasticsearch 6.4.1](https://www.elastic.co/downloads/past-releases/elasticsearch-6-4-1)
+2. Unzip to where you'd like to run Elasticsearch
+3. Add the following to config/elasticsearch.yml
+
+```
+http.cors.allow-origin: "/https?:\\/\\/(.*?\\.)?(quepid\\.com|splainer\\.io)/"
+http.cors.enabled: true
+indices.query.bool.max_clause_count: 10240
+```
+
+4. Install the Elasticsearch LTR plugin for 6.4.1:
+
+```
+bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.1.0-es6.4.1.zip
+```
+
+5. Run Elasticsearch
+
+```
+./bin/elasticsearch
+```
+
+In your browser, navigate to "http://localhost:9200" to confirm Elasticsearch is running
+
+# Index TMDB movies
+
+1. Download [tmdb.json](http://es-learn-to-rank.labs.o19s.com/tmdb.json)
+2. Install [Python 3.6](https://www.python.org/downloads/) and the Python [elasticsearch Python libraries](https://elasticsearch-py.readthedocs.io/en/master/) library
+3. Run `python indexTmdb.py` to index movies
+
+# Confirm Elasticsearch has TMDB movies
+
+Navigate [here](http://localhost:9200/tmdb/_search?q=*) and confirm you get results.
