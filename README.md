@@ -4,13 +4,30 @@ Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
 
 ## Using Docker
 
+### Build containers
+
+With Docker installed, build the containers as below. You only need to do this once.
+
 ```
 cd es-docker
 docker build --tag=elasticsearch-tlre .
-./elasticsearch.sh
+cd ../kb-docker
+docker build --tag=kibana-tlre .
 ```
 
+### Run containers
+
+```
+docker-compose up
+```
+
+Browse to http://localhost:9200 and http://localhost:5601 to confirm ES / Kibana running
+
+
+
 ## Install Manually
+
+### Elasticsearch
 
 1. Download [Elasticsearch 6.4.1](https://www.elastic.co/downloads/past-releases/elasticsearch-6-4-1)
 2. Unzip to where you'd like to run Elasticsearch
@@ -25,7 +42,7 @@ indices.query.bool.max_clause_count: 10240
 4. Install the Elasticsearch LTR plugin for 6.4.1:
 
 ```
-bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.1.0-es6.4.1.zip
+./bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.1.0-es6.4.1.zip
 ```
 
 5. Run Elasticsearch
@@ -34,9 +51,31 @@ bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.
 ./bin/elasticsearch
 ```
 
-In your browser, navigate to "http://localhost:9200" to confirm Elasticsearch is running
+6. In your browser, navigate to "http://localhost:9200" to confirm Elasticsearch is running
+
+### Kibana
+
+1. Download [Kibana 6.4.1](https://www.elastic.co/downloads/past-releases/kibana-6-4-1)
+
+2. Unzip to where you'd like to run Kibana
+
+3. Install the [Kibana Analyze Plugin](https://github.com/johtani/analyze-api-ui-plugin)
+
+```
+./bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/6.4.1/analyze-api-ui-plugin-6.4.1.zip 
+```
+
+4. Run Kibana
+
+```
+./bin/kibana
+```
+
+6. In your browser, navigate to "http://localhost:5601" to confirm Kibana is running with the Analyze plugin included
 
 # Index TMDB movies
+
+Once installed, grab TMDB data and index into Elasticsearch
 
 1. Download [tmdb.json](http://es-learn-to-rank.labs.o19s.com/tmdb.json)
 2. Install [Python 3.6](https://www.python.org/downloads/) and the Python [elasticsearch Python libraries](https://elasticsearch-py.readthedocs.io/en/master/) library
