@@ -40,9 +40,9 @@
       "analyzer": {
         "my_english": {
             "type": "custom",
-            "char_filters": ["html_strip"],
+            "char_filter": ["html_strip"],
             "tokenizer": "whitespace",
-            "filters":  ["lowercase", 
+            "filter":  ["lowercase", 
                          "english_possessive_stem",
                          "english_stop",
                          "english_keywords",
