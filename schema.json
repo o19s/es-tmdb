@@ -5,34 +5,78 @@
         "title": {
           "type": "text",
           "analyzer": "my_english",
-          "copy_to": ["text_std", "text_all", "text_std_gr_idx_syn", "text_std_syn", "text_std_idioms"]
+          "copy_to": [
+            "text_std",
+            "text_all",
+            "text_std_gr_idx_syn",
+            "text_std_syn",
+            "text_std_idioms"
+          ]
         },
         "tagline": {
           "type": "text",
           "analyzer": "my_english",
-          "copy_to": ["text_std", "text_all", "text_std_gr_idx_syn", "text_std_syn", "text_std_idioms"]
+          "copy_to": [
+            "text_std",
+            "text_all",
+            "text_std_gr_idx_syn",
+            "text_std_syn",
+            "text_std_idioms"
+          ]
         },
-        "directors": {      
+        "directors": {
           "type": "text",
           "analyzer": "my_english",
-          "copy_to": ["text_std", "text_people", "text_people2", "text_people_notf", "text_std_gr_idx_syn", "text_people_syn", 
-                      "text_std_syn", "text_people_gr_idx_syn", "text_std_idioms"]
+          "copy_to": [
+            "text_std",
+            "text_all",
+            "text_people",
+            "text_people2",
+            "text_people_notf",
+            "text_std_gr_idx_syn",
+            "text_people_syn",
+            "text_std_syn",
+            "text_people_gr_idx_syn",
+            "text_std_idioms"
+          ]
         },
         "cast": {
           "type": "text",
           "analyzer": "my_english",
-          "copy_to": ["text_std", "text_people", "text_people2", "text_people_notf", "text_std_gr_idx_syn", 
-                      "text_people_syn", "text_std_syn", "text_people_gr_idx_syn", "text_std_idioms"]
-         }, 
+          "copy_to": [
+            "text_std",
+            "text_all",
+            "text_people",
+            "text_people2",
+            "text_people_notf",
+            "text_std_gr_idx_syn",
+            "text_people_syn",
+            "text_std_syn",
+            "text_people_gr_idx_syn",
+            "text_std_idioms"
+          ]
+        },
         "overview": {
           "type": "text",
           "analyzer": "my_english",
-          "copy_to": ["text_std", "text_all", "text_std_gr_idx_syn", "text_std_syn", "text_std_idioms"]
+          "copy_to": [
+            "text_std",
+            "text_all",
+            "text_std_gr_idx_syn",
+            "text_std_syn",
+            "text_std_idioms"
+          ]
         },
         "genres": {
           "type": "text",
           "analyzer": "my_english",
-          "copy_to": ["text_std", "text_all", "text_std_gr_idx_syn", "text_std_syn", "text_std_idioms"]
+          "copy_to": [
+            "text_std",
+            "text_all",
+            "text_std_gr_idx_syn",
+            "text_std_syn",
+            "text_std_idioms"
+          ]
         },
         "text_all": {
           "type": "text",
@@ -40,8 +84,8 @@
         },
         "text_people": {
           "type": "text",
+          "analyzer": "my_english",
           "fielddata": true,
-          "analyzer": "standard",
           "store": true
         },
         "text_std": {
@@ -95,117 +139,169 @@
           "analyzer": "names",
           "similarity": "no_tf_similarity"
         }
-
-  }}},
+      }
+    }
+  },
   "settings": {
-    "analysis" : {
+    "analysis": {
       "filter": {
         "english_stop": {
-          "type":       "stop",
-          "stopwords":  "_english_"},
+          "type": "stop",
+          "stopwords": "_english_"
+        },
         "english_keywords": {
-          "type":       "keyword_marker",
-          "keywords":   []},
+          "type": "keyword_marker",
+          "keywords": []
+        },
         "english_stem": {
-          "type":       "stemmer",
-          "language":   "english"},
+          "type": "stemmer",
+          "language": "english"
+        },
         "english_possessive_stem": {
-          "type":       "stemmer",
-          "language":   "possessive_english"},
-        "my_bigram_filter": {
+          "type": "stemmer",
+          "language": "possessive_english"
+        },
+        "bigrams": {
           "type": "shingle",
           "max_shingle_size": 2,
           "min_shingle_size": 2,
-          "output_unigrams": false},
+          "output_unigrams": false
+        },
         "syn": {
           "type": "synonym",
           "synonyms": [
             "wife => bride",
-            "wife,spouse"]},
+            "wife,spouse"
+          ]
+        },
         "syn_bidirect": {
-            "type": "synonym",
-            "synonyms": [
-              "wife,bride",
-              "wife,spouse"]},
+          "type": "synonym",
+          "synonyms": [
+            "wife,bride",
+            "wife,spouse"
+          ]
+        },
         "syn_directed": {
           "type": "synonym",
           "synonyms": [
             "wife => wife, bride",
             "spouse => spouse, husband, wife, partner",
-            "tunes => cartoons, toons, songs"]},
+            "tunes => cartoons, toons, songs"
+          ]
+        },
         "syn_multiterm": {
           "type": "synonym",
-          "synonyms": ["looney tunes, cartoons",
-            "science fiction, sci fi, sci-fi, scifi"]
+          "synonyms": [
+            "looney tunes, cartoons",
+            "science fiction, sci fi, sci-fi, scifi"
+          ]
         },
-      "syn_gr_multiterm": {
-        "type": "synonym_graph",
-        "synonyms": [
-          "looney tunes, cartoons",
-          "science fiction, sci fi, sci-fi, scifi"]},
-      "syn_idioms": {
-        "type": "synonym",
-        "synonyms": [
-          "looneytunes, looney tunes, looney toons => looney_tunes",
-          "sci fi, scifi, science fiction => science_fiction"]}
+        "syn_gr_multiterm": {
+          "type": "synonym_graph",
+          "synonyms": [
+            "looney tunes, cartoons",
+            "science fiction, sci fi, sci-fi, scifi"
+          ]
+        },
+        "syn_idioms": {
+          "type": "synonym",
+          "synonyms": [
+            "looneytunes, looney tunes, looney toons => looney_tunes",
+            "sci fi, scifi, science fiction => science_fiction"
+          ]
+        }
       },
       "analyzer": {
         "names": {
           "type": "custom",
-            "tokenizer": "standard",
-            "filter":  ["lowercase", 
-                         "english_possessive_stem"]
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stem"
+          ]
         },
         "my_english": {
-            "type": "custom",
-            "char_filter": ["html_strip"],
-            "tokenizer": "standard",
-            "filter":  ["lowercase", 
-                         "english_possessive_stem",
-                         "english_stop",
-                         "english_keywords",
-                         "english_stem"]},
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stem",
+            "english_stop",
+            "english_keywords",
+            "english_stem"
+          ]
+        },
         "std_syn": {
           "type": "custom",
           "tokenizer": "standard",
-          "filter":  ["lowercase", 
-                        "syn"]},
+          "filter": [
+            "lowercase",
+            "syn"
+          ]
+        },
         "std_syn_bidirect": {
           "type": "custom",
           "tokenizer": "standard",
-          "filter":  ["lowercase", 
-                        "syn_bidirect"]},
+          "filter": [
+            "lowercase",
+            "syn_bidirect"
+          ]
+        },
         "std_syn_directed": {
           "type": "custom",
           "tokenizer": "standard",
-          "filter":  ["lowercase", 
-                        "syn_directed"]},
+          "filter": [
+            "lowercase",
+            "syn_directed"
+          ]
+        },
         "std_syn_multiterm": {
           "type": "custom",
           "tokenizer": "standard",
-          "filter":  ["lowercase", 
-                        "syn_multiterm"]},
+          "filter": [
+            "lowercase",
+            "syn_multiterm"
+          ]
+        },
         "std_syn_gr_multiterm": {
           "type": "custom",
           "tokenizer": "standard",
-          "filter":  ["lowercase", 
-                        "syn_gr_multiterm"]},
+          "filter": [
+            "lowercase",
+            "syn_gr_multiterm"
+          ]
+        },
         "std_idioms": {
           "type": "custom",
           "tokenizer": "standard",
-          "filter":  ["lowercase", 
-                       "syn_idioms"]}
- 
-  }},
-  "index": {
-    "similarity" : {
-      "no_tf_similarity" : {
-        "type" : "BM25",
-        "k1": 0.0,
-        "b": 1.0
+          "filter": [
+            "lowercase",
+            "syn_idioms"
+          ]
+        },
+        "std_syn_bigram_graph": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "syn_gr_multiterm",
+            "bigrams"
+          ]
+        }
       }
     },
-    "number_of_shards": 1
-  }}
+    "index": {
+      "similarity": {
+        "no_tf_similarity": {
+          "type": "BM25",
+          "k1": 0.0,
+          "b": 1.0
+        }
+      },
+      "number_of_shards": 1
+    }
+  }
 }
-
