@@ -21,7 +21,9 @@
             "text_all",
             "text_std_gr_idx_syn",
             "text_std_syn",
-            "text_std_idioms"
+            "text_std_idioms",
+            "text_std_tax",
+            "text_std_tax_phrase"
           ]
         },
         "directors": {
@@ -64,7 +66,9 @@
             "text_all",
             "text_std_gr_idx_syn",
             "text_std_syn",
-            "text_std_idioms"
+            "text_std_idioms",
+            "text_std_tax",
+            "text_std_tax_phrase"
           ]
         },
         "genres": {
@@ -75,8 +79,11 @@
             "text_all",
             "text_std_gr_idx_syn",
             "text_std_syn",
-            "text_std_idioms"
-          ]
+            "text_std_idioms",
+            "text_std_tax",
+            "text_std_tax_phrase"
+          ],
+          "fielddata": true
         },
         "text_all": {
           "type": "text",
@@ -97,6 +104,17 @@
         "text_std_idioms": {
           "type": "text",
           "analyzer": "std_idioms",
+          "store": true
+        },
+        "text_std_tax": {
+          "type": "text",
+          "analyzer": "std_tax",
+          "store": true
+        },
+        "text_std_tax_phrase": {
+          "type": "text",
+          "analyzer": "std_tax_phrase_idx",
+          "search_analyzer": "std_tax_phrase_q",
           "store": true
         },
         "text_std_gr_idx_syn": {
@@ -209,7 +227,46 @@
             "looneytunes, looney tunes, looney toons => looney_tunes",
             "sci fi, scifi, science fiction => science_fiction"
           ]
+        },
+        "semantic_idioms": {
+          "type": "synonym",
+          "synonyms": [
+            "sci fi, scifi, science fiction => science_fiction",
+            "fantasy => fantasy"
+          ]
+        },
+        "semantic_keep": {
+          "type": "keep",
+          "keep_words": ["science_fiction", "fantasy", "nerddom", "fanfic",
+                         "__science__", "__fiction__",
+                         "__nerd__", "__dom__",
+                         "__fant__", "__asy__",
+                         "__fan__", "__fic__"]
+        },
+        "semantic_expansion": {
+          "type": "synonym",
+          "synonyms": [
+            "science_fiction => science_fiction, nerddom",
+            "fantasy => fantasy"
+          ]
+        },
+        "semantic_expansion_gr": {
+          "type": "synonym_graph",
+          "synonyms": [
+            "science_fiction => __science__ __fiction__, __nerd__ __dom__",
+            "fantasy => __fant__ __asy__,  __nerd__ __dom__",
+            "fanfic => __fan__ __fic__, __nerd__ __dom__"
+          ]
+        },
+        "semantic_expansion_sausage": {
+          "type": "synonym",
+          "synonyms": [
+            "science_fiction => __science__ __fiction__, __nerd__ __dom__",
+            "fantasy => __fant__ __asy__, __nerd__ __dom__",
+            "fanfic => __fan__ __fic__, __nerd__ __dom__"
+          ]
         }
+          
       },
       "analyzer": {
         "names": {
@@ -232,6 +289,36 @@
             "english_stop",
             "english_keywords",
             "english_stem"
+          ]
+        },
+        "std_tax": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "semantic_idioms",
+            "semantic_keep",
+            "semantic_expansion"
+          ]
+        },
+        "std_tax_phrase_q": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "semantic_idioms",
+            "semantic_keep",
+            "semantic_expansion_gr"
+          ]
+        },
+        "std_tax_phrase_idx": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "semantic_idioms",
+            "semantic_keep",
+            "semantic_expansion_sausage"
           ]
         },
         "std_syn": {
