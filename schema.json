@@ -39,7 +39,9 @@
             "text_people_syn",
             "text_std_syn",
             "text_people_gr_idx_syn",
-            "text_std_idioms"
+            "text_std_idioms",
+            "text_people_notf_front",
+            "text_people_bigram"
           ]
         },
         "cast": {
@@ -55,7 +57,9 @@
             "text_people_syn",
             "text_std_syn",
             "text_people_gr_idx_syn",
-            "text_std_idioms"
+            "text_std_idioms",
+            "text_people_notf_front",
+            "text_people_bigram"
           ]
         },
         "overview": {
@@ -94,6 +98,13 @@
           "analyzer": "my_english",
           "fielddata": true,
           "store": true
+        },
+        "text_people_bigram": {
+          "type": "text",
+          "analyzer": "names_bigram",
+          "fielddata": true,
+          "store": true,
+          "similarity": "no_tf_similarity"
         },
         "text_std": {
           "type": "text",
@@ -156,6 +167,11 @@
           "type": "text",
           "analyzer": "names",
           "similarity": "no_tf_similarity"
+        },
+        "text_people_notf_front": {
+          "type": "text",
+          "analyzer": "names_front",
+          "similarity": "no_tf_similarity"
         }
       }
     }
@@ -163,13 +179,22 @@
   "settings": {
     "analysis": {
       "filter": {
+        "my_length_limit": {
+          "type": "limit",
+          "max_token_count": 10
+        },
+        "my_bigram_filter": {
+          "type": "shingle",
+          "max_shingle_size": 2,
+          "min_shingle_size": 2,
+          "output_unigrams": false},
         "english_stop": {
           "type": "stop",
           "stopwords": "_english_"
         },
         "english_keywords": {
           "type": "keyword_marker",
-          "keywords": []
+          "keywords": ["maine"]
         },
         "english_stem": {
           "type": "stemmer",
@@ -275,6 +300,24 @@
           "filter": [
             "lowercase",
             "english_possessive_stem"
+          ]
+        },
+        "names_bigram": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stem",
+            "my_bigram_filter"
+          ]
+        },
+        "names_front": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stem",
+            "my_length_limit"
           ]
         },
         "my_english": {

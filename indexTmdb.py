@@ -19,7 +19,7 @@ def indexableMovies():
                    'overview': tmdbMovie['overview'],
                    'tagline': tmdbMovie['tagline'],
                    'directors': [director['name'] for director in tmdbMovie['directors']],
-                   'cast': [castMember['name'] for castMember in tmdbMovie['cast']],
+                   'cast': " ".join([castMember['name'] for castMember in tmdbMovie['cast']]),
                    'genres': [genre['name'] for genre in tmdbMovie['genres']],
                    'release_date': releaseDate,
                    'vote_average': float(tmdbMovie['vote_average']) if 'vote_average' in tmdbMovie else None,
