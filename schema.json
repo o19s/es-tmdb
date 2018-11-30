@@ -194,7 +194,7 @@
         },
         "english_keywords": {
           "type": "keyword_marker",
-          "keywords": ["maine"]
+          "keywords": []
         },
         "english_stem": {
           "type": "stemmer",
@@ -329,6 +329,7 @@
           "filter": [
             "lowercase",
             "english_possessive_stem",
+            "syn_directed",
             "english_stop",
             "english_keywords",
             "english_stem"
