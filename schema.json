@@ -33,6 +33,7 @@
             "text_std",
             "text_all",
             "text_people",
+            "text_people_max",
             "text_people2",
             "text_people_notf",
             "text_std_gr_idx_syn",
@@ -51,6 +52,7 @@
             "text_std",
             "text_all",
             "text_people",
+            "text_people_max",            
             "text_people2",
             "text_people_notf",
             "text_std_gr_idx_syn",
@@ -96,6 +98,12 @@
         "text_people": {
           "type": "text",
           "analyzer": "my_english",
+          "fielddata": true,
+          "store": true
+        },
+        "text_people_max": {
+          "type": "text",
+          "analyzer": "max_names",
           "fielddata": true,
           "store": true
         },
@@ -200,6 +208,20 @@
           "type": "stemmer",
           "language": "english"
         },
+        "custom_stems_override" : {
+            "type" : "stemmer_override",
+            "rules" : [
+                "maine => maine"
+            ]
+        },
+        "english_minimal_stem" : {
+            "type" : "stemmer",
+            "language" : "minimal_english"
+        },
+        "english_light_stem" : {
+            "type" : "stemmer",
+            "language" : "light_english"
+        },
         "english_possessive_stem": {
           "type": "stemmer",
           "language": "possessive_english"
@@ -290,8 +312,13 @@
             "fantasy => __fant__ __asy__, __nerd__ __dom__",
             "fanfic => __fan__ __fic__, __nerd__ __dom__"
           ]
-        }
-          
+        },
+        "my_bigram_filter": {
+         "type": "shingle",
+         "max_shingle_size": 2,
+         "min_shingle_size": 2,
+         "output_unigrams": false
+        }          
       },
       "analyzer": {
         "names": {
@@ -333,6 +360,17 @@
             "english_stop",
             "english_keywords",
             "english_stem"
+          ]
+        },
+        "max_names": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stem"
           ]
         },
         "std_tax": {
