@@ -36,6 +36,7 @@
             "text_people_max",
             "text_people2",
             "text_people_notf",
+            "text_people_notf_front_4",
             "text_std_gr_idx_syn",
             "text_people_syn",
             "text_std_syn",
@@ -55,6 +56,7 @@
             "text_people_max",            
             "text_people2",
             "text_people_notf",
+            "text_people_notf_front_4",
             "text_std_gr_idx_syn",
             "text_people_syn",
             "text_std_syn",
@@ -180,6 +182,11 @@
           "type": "text",
           "analyzer": "names_front",
           "similarity": "no_tf_similarity"
+        },
+        "text_people_notf_front_4": {
+          "type": "text",
+          "analyzer": "names_front4",
+          "similarity": "no_tf_similarity"
         }
       }
     }
@@ -190,6 +197,10 @@
         "my_length_limit": {
           "type": "limit",
           "max_token_count": 10
+        },
+        "my_length_limit4": {
+          "type": "limit",
+          "max_token_count": 4
         },
         "my_bigram_filter": {
           "type": "shingle",
@@ -202,7 +213,7 @@
         },
         "english_keywords": {
           "type": "keyword_marker",
-          "keywords": []
+          "keywords": ["maine"]
         },
         "english_stem": {
           "type": "stemmer",
@@ -345,6 +356,15 @@
             "lowercase",
             "english_possessive_stem",
             "my_length_limit"
+          ]
+        },
+        "names_front4": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stem",
+            "my_length_limit4"
           ]
         },
         "my_english": {
