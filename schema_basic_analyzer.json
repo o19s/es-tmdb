@@ -1,54 +1,64 @@
 {
   "mappings": {
-    "movie": {
-      "properties": {
-        "title": {
-          "type": "text",
-          "copy_to": "text_all"
-        },
-        "overview": {
-          "type": "text",
-          "analyzer": "my_english",
-          "copy_to": "text_all"
-        },
-        "text_all": {
-          "type": "text",
-          "analyzer": "my_english"
-        }
-  }}},
+    "properties": {
+      "title": {
+        "type": "text",
+        "copy_to": "text_all"
+      },
+      "overview": {
+        "type": "text",
+        "analyzer": "my_english",
+        "copy_to": "text_all"
+      },
+      "text_all": {
+        "type": "text",
+        "analyzer": "my_english"
+      }
+    }
+  },
   "settings": {
-    "analysis" : {
+    "analysis": {
       "filter": {
         "english_stop": {
-          "type":       "stop",
-          "stopwords":  "_english_"},
+          "type": "stop",
+          "stopwords": "_english_"
+        },
         "english_keywords": {
-          "type":       "keyword_marker",
-          "keywords":   []},
+          "type": "keyword_marker",
+          "keywords": []
+        },
         "english_stem": {
-          "type":       "stemmer",
-          "language":   "english"},
+          "type": "stemmer",
+          "language": "english"
+        },
         "english_possessive_stem": {
-          "type":       "stemmer",
-          "language":   "possessive_english"},
+          "type": "stemmer",
+          "language": "possessive_english"
+        },
         "my_bigram_filter": {
           "type": "shingle",
           "max_shingle_size": 2,
           "min_shingle_size": 2,
-          "output_unigrams": false}
+          "output_unigrams": false
+        }
       },
       "analyzer": {
         "my_english": {
-            "type": "custom",
-            "char_filter": ["html_strip"],
-            "tokenizer": "whitespace",
-            "filter":  ["lowercase", 
-                         "english_possessive_stem",
-                         "english_stop",
-                         "english_keywords",
-                         "english_stem"]
-  }}},
-  "number_of_shards": 1
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "english_possessive_stem",
+            "english_stop",
+            "english_keywords",
+            "english_stem"
+          ]
+        }
+      }
+    },
+    "number_of_shards": 1
+  }
 }
-}
-

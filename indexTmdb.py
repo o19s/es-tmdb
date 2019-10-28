@@ -39,7 +39,6 @@ def reindex(es, movieDict={}, schema='schema.json', index='tmdb'):
     def bulkDocs(movieDict):
         for movie in indexableMovies():
             addCmd = {"_index": index,
-                      "_type": "movie",
                       "_id": movie['id'],
                       "_source": movie}
             yield addCmd

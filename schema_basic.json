@@ -1,16 +1,16 @@
 {
   "mappings": {
-    "movie": {
-      "properties": {
-        "title": {
-          "type": "text"
-        },
-        "overview": {
-          "type": "text",
-          "analyzer": "english"
-  }}}},
+    "properties": {
+      "title": {
+        "type": "text"
+      },
+      "overview": {
+        "type": "text",
+        "analyzer": "english"
+      }
+    }
+  },
   "settings": {
     "number_of_shards": 1
   }
 }
-

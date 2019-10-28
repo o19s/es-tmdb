@@ -4,17 +4,6 @@ Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
 
 ## Using Docker
 
-### Build containers
-
-With Docker installed, build the containers as below. You only need to do this once.
-
-```
-cd es-docker
-docker build --tag=elasticsearch-tlre .
-cd ../kb-docker
-docker build --tag=kibana-tlre .
-```
-
 ### Run containers
 
 ```
@@ -29,7 +18,7 @@ Browse to http://localhost:9200 and http://localhost:5601 to confirm ES / Kibana
 
 ### Elasticsearch
 
-1. Download [Elasticsearch 6.4.1](https://www.elastic.co/downloads/past-releases/elasticsearch-6-4-1)
+1. Download [Elasticsearch 7.3.1](https://www.elastic.co/downloads/past-releases/elasticsearch-7-3-1)
 2. Unzip to where you'd like to run Elasticsearch
 3. Add the following to config/elasticsearch.yml
 
@@ -39,10 +28,10 @@ http.cors.enabled: true
 indices.query.bool.max_clause_count: 10240
 ```
 
-4. Install the Elasticsearch LTR plugin for 6.4.1:
+4. Install the Elasticsearch LTR plugin for 7.3.1:
 
 ```
-./bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.1.0-es6.4.1.zip
+./bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.1.2-es7.3.1.zip
 ```
 
 5. Run Elasticsearch
@@ -55,14 +44,14 @@ indices.query.bool.max_clause_count: 10240
 
 ### Kibana
 
-1. Download [Kibana 6.4.1](https://www.elastic.co/downloads/past-releases/kibana-6-4-1)
+1. Download [Kibana 7.3.1](https://www.elastic.co/downloads/past-releases/kibana-7-3-1)
 
 2. Unzip to where you'd like to run Kibana
 
 3. Install the [Kibana Analyze Plugin](https://github.com/johtani/analyze-api-ui-plugin)
 
 ```
-./bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/6.4.1/analyze-api-ui-plugin-6.4.1.zip 
+./bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/7.3.1/analyze-api-ui-plugin-7.3.1.zip
 ```
 
 4. Run Kibana
