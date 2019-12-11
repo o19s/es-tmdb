@@ -1,193 +1,184 @@
 {
   "mappings": {
-    "movie": {
-      "properties": {
-        "title": {
-          "type": "text",
-          "analyzer": "my_english",
-          "copy_to": [
-            "text_std",
-            "text_all",
-            "text_std_gr_idx_syn",
-            "text_std_syn",
-            "text_std_idioms"
-          ]
-        },
-        "tagline": {
-          "type": "text",
-          "analyzer": "my_english",
-          "copy_to": [
-            "text_std",
-            "text_all",
-            "text_std_gr_idx_syn",
-            "text_std_syn",
-            "text_std_idioms",
-            "text_std_tax",
-            "text_std_tax_phrase"
-          ]
-        },
-        "directors": {
-          "type": "text",
-          "analyzer": "my_english",
-          "copy_to": [
-            "text_std",
-            "text_all",
-            "text_people",
-            "text_people_max",
-            "text_people2",
-            "text_people_notf",
-            "text_people_notf_front_4",
-            "text_std_gr_idx_syn",
-            "text_people_syn",
-            "text_std_syn",
-            "text_people_gr_idx_syn",
-            "text_std_idioms",
-            "text_people_notf_front",
-            "text_people_bigram"
-          ]
-        },
-        "cast": {
-          "type": "text",
-          "analyzer": "my_english",
-          "copy_to": [
-            "text_std",
-            "text_all",
-            "text_people",
-            "text_people_max",            
-            "text_people2",
-            "text_people_notf",
-            "text_people_notf_front_4",
-            "text_std_gr_idx_syn",
-            "text_people_syn",
-            "text_std_syn",
-            "text_people_gr_idx_syn",
-            "text_std_idioms",
-            "text_people_notf_front",
-            "text_people_bigram"
-          ]
-        },
-        "overview": {
-          "type": "text",
-          "analyzer": "my_english",
-          "copy_to": [
-            "text_std",
-            "text_all",
-            "text_std_gr_idx_syn",
-            "text_std_syn",
-            "text_std_idioms",
-            "text_std_tax",
-            "text_std_tax_phrase"
-          ]
-        },
-        "genres": {
-          "type": "text",
-          "analyzer": "my_english",
-          "copy_to": [
-            "text_std",
-            "text_all",
-            "text_std_gr_idx_syn",
-            "text_std_syn",
-            "text_std_idioms",
-            "text_std_tax",
-            "text_std_tax_phrase"
-          ],
-          "fielddata": true
-        },
-        "text_all": {
-          "type": "text",
-          "analyzer": "my_english"
-        },
-        "text_people": {
-          "type": "text",
-          "analyzer": "my_english",
-          "fielddata": true,
-          "store": true
-        },
-        "text_people_max": {
-          "type": "text",
-          "analyzer": "max_names",
-          "fielddata": true,
-          "store": true
-        },
-        "text_people_bigram": {
-          "type": "text",
-          "analyzer": "names_bigram",
-          "fielddata": true,
-          "store": true,
-          "similarity": "no_tf_similarity"
-        },
-        "text_std": {
-          "type": "text",
-          "analyzer": "standard",
-          "search_analyzer": "std_syn",
-          "store": true
-        },
-        "text_std_idioms": {
-          "type": "text",
-          "analyzer": "std_idioms",
-          "store": true
-        },
-        "text_std_tax": {
-          "type": "text",
-          "analyzer": "std_tax",
-          "store": true
-        },
-        "text_std_tax_phrase": {
-          "type": "text",
-          "analyzer": "std_tax_phrase_idx",
-          "search_analyzer": "std_tax_phrase_q",
-          "store": true
-        },
-        "text_std_gr_idx_syn": {
-          "type": "text",
-          "analyzer": "std_syn_gr_multiterm",
-          "store": true
-        },
-        "text_people_gr_idx_syn": {
-          "type": "text",
-          "analyzer": "std_syn_gr_multiterm",
-          "store": true
-        },
-        "text_std_syn_mt": {
-          "type": "text",
-          "analyzer": "std_syn_multiterm",
-          "store": true
-        },
-        "text_people_syn_mt": {
-          "type": "text",
-          "analyzer": "std_syn_multiterm",
-          "store": true
-        },
-        "text_std_syn": {
-          "type": "text",
-          "analyzer": "std_syn_bidirect",
-          "store": true
-        },
-        "text_people_syn": {
-          "type": "text",
-          "analyzer": "std_syn_bidirect",
-          "store": true
-        },
-        "text_people2": {
-          "type": "text",
-          "analyzer": "names",
-          "store": true
-        },
-        "text_people_notf": {
-          "type": "text",
-          "analyzer": "names",
-          "similarity": "no_tf_similarity"
-        },
-        "text_people_notf_front": {
-          "type": "text",
-          "analyzer": "names_front",
-          "similarity": "no_tf_similarity"
-        },
-        "text_people_notf_front_4": {
-          "type": "text",
-          "analyzer": "names_front4",
-          "similarity": "no_tf_similarity"
-        }
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_english",
+        "copy_to": [
+          "text_std",
+          "text_all",
+          "text_std_gr_idx_syn",
+          "text_std_syn",
+          "text_std_idioms"
+        ]
+      },
+      "tagline": {
+        "type": "text",
+        "analyzer": "my_english",
+        "copy_to": [
+          "text_std",
+          "text_all",
+          "text_std_gr_idx_syn",
+          "text_std_syn",
+          "text_std_idioms",
+          "text_std_tax",
+          "text_std_tax_phrase"
+        ]
+      },
+      "directors": {
+        "type": "text",
+        "analyzer": "my_english",
+        "copy_to": [
+          "text_std",
+          "text_all",
+          "text_people",
+          "text_people_max",
+          "text_people2",
+          "text_people_notf",
+          "text_std_gr_idx_syn",
+          "text_people_syn",
+          "text_std_syn",
+          "text_people_gr_idx_syn",
+          "text_std_idioms",
+          "text_people_notf_front",
+          "text_people_bigram"
+        ]
+      },
+      "cast": {
+        "type": "text",
+        "analyzer": "my_english",
+        "copy_to": [
+          "text_std",
+          "text_all",
+          "text_people",
+          "text_people_max",            
+          "text_people2",
+          "text_people_notf",
+          "text_std_gr_idx_syn",
+          "text_people_syn",
+          "text_std_syn",
+          "text_people_gr_idx_syn",
+          "text_std_idioms",
+          "text_people_notf_front",
+          "text_people_bigram"
+        ]
+      },
+      "overview": {
+        "type": "text",
+        "analyzer": "my_english",
+        "copy_to": [
+          "text_std",
+          "text_all",
+          "text_std_gr_idx_syn",
+          "text_std_syn",
+          "text_std_idioms",
+          "text_std_tax",
+          "text_std_tax_phrase"
+        ]
+      },
+      "genres": {
+        "type": "text",
+        "analyzer": "my_english",
+        "copy_to": [
+          "text_std",
+          "text_all",
+          "text_std_gr_idx_syn",
+          "text_std_syn",
+          "text_std_idioms",
+          "text_std_tax",
+          "text_std_tax_phrase"
+        ],
+        "fielddata": true
+      },
+      "text_all": {
+        "type": "text",
+        "analyzer": "my_english"
+      },
+      "text_people": {
+        "type": "text",
+        "analyzer": "my_english",
+        "fielddata": true,
+        "store": true
+      },
+      "text_people_max": {
+        "type": "text",
+        "analyzer": "max_names",
+        "fielddata": true,
+        "store": true
+      },
+      "text_people_bigram": {
+        "type": "text",
+        "analyzer": "names_bigram",
+        "fielddata": true,
+        "store": true,
+        "similarity": "no_tf_similarity"
+      },
+      "text_std": {
+        "type": "text",
+        "analyzer": "standard",
+        "search_analyzer": "std_syn",
+        "store": true
+      },
+      "text_std_idioms": {
+        "type": "text",
+        "analyzer": "std_idioms",
+        "store": true
+      },
+      "text_std_tax": {
+        "type": "text",
+        "analyzer": "std_tax",
+        "store": true
+      },
+      "text_std_tax_phrase": {
+        "type": "text",
+        "analyzer": "std_tax_phrase_idx",
+        "search_analyzer": "std_tax_phrase_q",
+        "store": true
+      },
+      "text_std_gr_idx_syn": {
+        "type": "text",
+        "analyzer": "std_syn_gr_multiterm",
+        "store": true
+      },
+      "text_people_gr_idx_syn": {
+        "type": "text",
+        "analyzer": "std_syn_gr_multiterm",
+        "store": true
+      },
+      "text_std_syn_mt": {
+        "type": "text",
+        "analyzer": "std_syn_multiterm",
+        "store": true
+      },
+      "text_people_syn_mt": {
+        "type": "text",
+        "analyzer": "std_syn_multiterm",
+        "store": true
+      },
+      "text_std_syn": {
+        "type": "text",
+        "analyzer": "std_syn_bidirect",
+        "store": true
+      },
+      "text_people_syn": {
+        "type": "text",
+        "analyzer": "std_syn_bidirect",
+        "store": true
+      },
+      "text_people2": {
+        "type": "text",
+        "analyzer": "names",
+        "store": true
+      },
+      "text_people_notf": {
+        "type": "text",
+        "analyzer": "names",
+        "similarity": "no_tf_similarity"
+      },
+      "text_people_notf_front": {
+        "type": "text",
+        "analyzer": "names_front",
+        "similarity": "no_tf_similarity"
       }
     }
   },
@@ -324,7 +315,7 @@
             "fanfic => __fan__ __fic__, __nerd__ __dom__"
           ]
         },
-        "my_bigram_filter": {
+        "my_bigram_filter2": {
          "type": "shingle",
          "max_shingle_size": 2,
          "min_shingle_size": 2,
@@ -379,6 +370,20 @@
             "syn_directed",
             "english_stop",
             "english_keywords",
+            "english_stem"
+          ]
+        },        
+        "my_english2": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stem",
+            "syn_directed",
+            "english_stop",
             "english_stem"
           ]
         },
