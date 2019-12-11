@@ -1,5 +1,7 @@
 Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
 
+_**Note:** This branch contains a schema and index upgrade for Elasticsearch 7.5 - it does NOT include upgrades to the dockerfiles or instructions below (yet)._
+
 # Install Elasticsearch w/ Dependencies
 
 ## Using Docker
