@@ -62,7 +62,7 @@ indices.query.bool.max_clause_count: 10240
 3. Install the [Kibana Analyze Plugin](https://github.com/johtani/analyze-api-ui-plugin)
 
 ```
-./bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/6.4.1/analyze-api-ui-plugin-6.4.1.zip 
+./bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/6.4.1/analyze-api-ui-plugin-6.4.1.zip
 ```
 
 4. Run Kibana
@@ -77,9 +77,10 @@ indices.query.bool.max_clause_count: 10240
 
 Once installed, grab TMDB data and index into Elasticsearch
 
-1. Download [tmdb.json](http://es-learn-to-rank.labs.o19s.com/tmdb.json)
-2. Install [Python 3.6](https://www.python.org/downloads/) and the Python [elasticsearch Python libraries](https://elasticsearch-py.readthedocs.io/en/master/) library
-3. Run `python indexTmdb.py` to index movies
+1. Download [tmdb.json](http://es-learn-to-rank.labs.o19s.com/tmdb.json), run `curl -o tmdb.json http://es-learn-to-rank.labs.o19s.com/tmdb.json`
+2. Install [Python 3.6](https://www.python.org/downloads/)
+3. Install [elasticsearch Python libraries](https://elasticsearch-py.readthedocs.io/en/master/) library, run `pip install elasticsearch`
+4. Run `python indexTmdb.py` to index movies
 
 # Confirm Elasticsearch has TMDB movies
 
