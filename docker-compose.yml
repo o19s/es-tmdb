@@ -16,6 +16,7 @@ services:
       - "9200"
     environment:
       SERVER_NAME: "elasticsearch"
+      discovery.type: "single-node" 
     volumes:
       - tlre-es-data:/usr/share/elasticsearch/data
 
