@@ -1,0 +1,1215 @@
+{
+	"info": {
+		"_postman_id": "d57e05ea-fde8-4c5b-9440-6956344a42ef",
+		"name": "es-TLRE",
+		"description": "Elasticsearch API requests from TLRE.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-Analyze \"Maine\"",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"explain\": true,\n  \"text\": \"maine\",\n  \"analyzer\": \"my_english\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_analyze",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_analyze"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-Analyze \"hello to the earthling's\"",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"explain\": true,\n  \"text\": \"hello to the earthling’s\",\n  \"analyzer\": \"my_english\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_analyze",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_analyze"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-Query DSL",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"multi_match\": {\n      \"query\": \"rambo\",\n      \"fields\": [\"title^10\", \"overview\", \"tagline\"]\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-Query explainations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"multi_match\": {\n      \"query\": \"rambo\",\n      \"fields\": [\"title^10\", \"overview\", \"tagline\"]\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_explain/1368",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_explain",
+						"1368"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-Query booleans",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"query\": {\n     \"bool\": {\n       \"should\": [\n          {\"match_phrase\": {\n          \t\"title\": {\n        \t\t\"boost\": 10,\n            \t \"query\": \"rocky balboa\"}}},\n         {\"multi_match\": {\n            \"query\": \"rocky balboa\",\n            \"fields\": [\"title\",\n                       \"overview\",\n                       \"tagline\"] }}\n                       ]}}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-Query validate explain",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": {\n    \"multi_match\": {\n      \"query\": \"rambo\",\n      \"fields\": [\"title^10\", \n                 \"overview\",\n                 \"tagline\"]\n }}}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_validate/query?explain=true",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_validate",
+						"query"
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-Baseline search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n      \"multi_match\": {\n          \"query\": \"will smith\",\n          \"type\": \"best_fields\",\n          \"fields\": [\"title\", \"tagline\", \"overview\", \"cast\"]\n      }  \n  }\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-Baseline \"best fields\"",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"query\": {\n    \"multi_match\": {\n      \"type\": \"best_fields\",\n      \"query\": \"adam driver\",\n      \"fields\": [\"title\",\n                 \"overview\",\n                 \"cast\",\n                 \"directors\"]\n}}}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-Baseline tie-breaker",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"query\": {\n    \"multi_match\": {\n      \"tie_breaker\": 0.5, \n      \"query\": \"adam driver\",\n      \"fields\": [\"title^10\",\n                 \"overview\",\n                 \"cast\",\n                 \"directors\"]\n}}}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-Baseline cross fields",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"query\": {\n    \"multi_match\": {\n      \"type\": \"cross_fields\",\n      \"query\": \"adam driver\",\n      \"fields\": [\"title^10\",\n                 \"overview\",\n                 \"cast\",\n                 \"directors\"]\n}}}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-Person search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match\": {\n      \"text_people\": \"will smith\"\n    }\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-Person search custom field",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match\": {\n      \"text_people2\": \"will smith\"\n    }\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-Person search custom field phrase match",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match_phrase\": {\n      \"text_people2\": \"will smith\"\n    }\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-Person search + date boost",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n  \t\"function_score\": {\n  \t\t\"query\": {\n\t\t\t\"match_phrase\": {\n\t\t\t\"text_people2\": \"william shatner\"\n\t\t\t}\n  \t\t},\n  \t\t\"functions\": [{\n  \t\t\t\"linear\": {\n  \t\t\t\t\"release_date\": {\n  \t\t\t\t\t\"scale\": \"900d\"\n  \t\t\t\t}\n  \t\t\t}\n  \t\t}]\n  \t}\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-Person search + no TF Front analyzer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n  \t\"function_score\": {\n  \t\t\"query\": {\n\t\t\t\"match_phrase\": {\n\t\t\t\"text_people_notf_front\": \"william shatner\"\n\t\t\t}\n  \t\t},\n  \t\t\"functions\": [{\n  \t\t\t\"linear\": {\n  \t\t\t\t\"release_date\": {\n  \t\t\t\t\t\"scale\": \"900d\"\n  \t\t\t\t}\n  \t\t\t}\n  \t\t}]\n  \t}\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-Baseline search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": {\n    \t\"multi_match\": {\n\t\t\t\"type\": \"cross_fields\",\n\t\t\t\"query\": \"will smith\",\n\t\t\t\"fields\": [\"title\",\n            \t\t   \"overview\",\n            \t\t   \"tagline\"]\n    \t\t\t\t}\n    \t\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-Baseline search + boost signal",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": {\n    \t\t\"bool\": {\n    \t\t\t\"should\": [\n    \t\t\t\t{\"multi_match\": {\n    \t\t\t\t\t\"type\": \"cross_fields\",\n\t    \t\t\t\t\"query\": \"will smith\",\n\t\t    \t\t\t\"fields\": [\"title\",\n\t\t                \t\t   \"overview\",\n\t\t                \t\t   \"tagline\"]\n    \t\t\t\t}\n    \t\t\t\t},\n    \t\t\t\t{\"match\": {\n\t\t\t\t       \"text_people_notf_front\": {\n\t\t\t\t          \"query\": \"will smith\",\n\t\t\t\t          \"minimum_should_match\": \"100%\",\n\t\t\t\t          \"boost\": 100}\n\t\t\t\t          }\n\t\t\t\t          }\n    \t\t]\n    \t}\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-Baseline search + weighted boost",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"should\": [\n        {\n          \"multi_match\": {\n            \"query\": \"will smith\",\n            \"type\": \"cross_fields\",\n            \"fields\": [\n              \"title\",\n              \"tagline\",\n              \"overview\"\n            ]\n          }\n        },\n        {\n          \"function_score\": {\n            \"functions\": [\n              {\n                \"weight\": 100,\n                \"filter\": {\n                  \"match_phrase\": {\n                    \"text_people_notf_front\": {\n                      \"query\": \"will smith\",\n                      \"boost\":100\n                    }\n                  }\n                },\n                \"gauss\": {\n                  \"release_date\": {\n                    \"scale\": \"900d\"\n                  }\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-Boosting tier",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"should\": [\n        {\n          \"multi_match\": {\n            \"query\": \"will smith\",\n            \"type\": \"cross_fields\",\n            \"fields\": [\n              \"title\",\n              \"tagline\",\n              \"overview\"\n            ]\n          }\n        },\n        {\n          \"function_score\": {\n            \"query\": {\n              \"match_phrase\": {\n                \"text_people_notf_front\": {\n                  \"query\": \"will smith\",\n                  \"boost\": 100\n                }\n              }\n            },\n            \"functions\": [\n              {\n                \"weight\": 100,\n                \"gauss\": {\n                  \"release_date\": {\n                    \"scale\": \"900d\"\n                  }\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-Bool queries have filters",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"should\": [\n        {\n          \"multi_match\": {\n            \"query\": \"will smith\",\n            \"type\": \"cross_fields\",\n            \"fields\": [\n              \"title\",\n              \"tagline\",\n              \"overview\"\n            ]\n          }\n        },\n        {\n          \"bool\": {\n            \"filter\": {\n              \"match_phrase\": {\n                \"text_people_notf_front\": {\n                  \"query\": \"will smith\"\n                }\n              }\n            },\n            \"should\": [\n              {\n                \"multi_match\": {\n                  \"fields\": [\n                    \"cast^10\",\n                    \"directors\"\n                  ],\n                  \"query\": \"will smith\"\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Bidirectional synonyms",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match\": {\n      \"text_std\": {\n        \"query\": \"bride\",\n        \"analyzer\": \"std_syn_bidirect\"\n      }\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Directional synonyms",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match\": {\n      \"text_std\": {\n        \"query\": \"bride\",\n        \"analyzer\": \"std_syn_directed\"\n      }\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-No graph",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match\": {\n      \"text_std\": {\n        \"query\": \"greatest scifi movie\",\n        \"analyzer\": \"std_syn_multiterm\"\n      }\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Graph",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match\": {\n      \"text_std\": {\n        \"query\": \"greatest scifi movie\",\n        \"analyzer\": \"std_syn_gr_multiterm\"\n      }\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Lab different analyzer >>> field centric search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"multi_match\": {\n      \"type\": \"cross_fields\", \n      \"query\": \"worlds best wife\",\n      \"fields\": [\"text_std_syn\", \"text_std\"]\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_validate/query?explain=true",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_validate",
+						"query"
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Lab different analyzer (multi) >>> field centric search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"multi_match\": {\n      \"type\": \"cross_fields\", \n      \"query\": \"scifi movie  wife\",\n      \"fields\": [\"text_std_syn\", \"text_std_gr_idx_syn\"]\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_validate/query?explain=true",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_validate",
+						"query"
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Lab same analyzer >>> blended term centricsearch",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"multi_match\": {\n      \"type\": \"cross_fields\", \n      \"query\": \"worlds best wife\",\n      \"fields\": [\"text_std_syn\", \"text_people_syn\"]\n    }\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_validate/query?explain=true",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_validate",
+						"query"
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Lab same analyzer (multi) >>> blended term centricsearch",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"multi_match\": {\n      \"type\": \"cross_fields\", \n      \"query\": \"scifi movie  wife\",\n      \"fields\": [\"text_std_syn\", \"text_std_gr_idx_syn\"]\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_validate/query?explain=true",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_validate",
+						"query"
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Lab2 idioms",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match_phrase\": {\n      \"text_std_idioms\": {\n        \"query\": \"sci fi movie\"\n      }\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search/?explain=true",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search",
+						""
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Lab2 idioms problem",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match_phrase\": {\n      \"text_std_idioms\": {\n        \"query\": \"science movie\"\n      }\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search/?explain=true",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search",
+						""
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Lab2 synonyms don't do this",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match_phrase\": {\n      \"text_std_syn\": {\n        \"query\": \"science movie\",\n        \"slop\": 2\n      }\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/tmdb/_search/?explain=true",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"tmdb",
+						"_search",
+						""
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
