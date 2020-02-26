@@ -370,7 +370,8 @@
             "syn_directed",
             "english_stop",
             "english_keywords",
-            "english_stem"
+            "english_stem",
+            "custom_stems_override"
           ]
         },        
         "my_english2": {
