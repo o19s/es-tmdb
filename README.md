@@ -78,9 +78,13 @@ bin/kibana
 Once installed, grab TMDB data and index into Elasticsearch
 
 1. Download [tmdb.json](http://es-learn-to-rank.labs.o19s.com/tmdb.json), run `curl -o tmdb.json http://es-learn-to-rank.labs.o19s.com/tmdb.json`
-2. Install [Python 3.6](https://www.python.org/downloads/)
+2. Install [Python 3.6] or greater (https://www.python.org/downloads/)
 3. Install [elasticsearch Python libraries](https://elasticsearch-py.readthedocs.io/en/master/) library, run `pip install elasticsearch`
-4. Run `python indexTmdb.py` to index movies
+  * Optional set-up a virtual ennvironment before install
+    `python3 -m venv .`
+    `source bin/activate`
+  
+4. Run `python3 indexTmdb.py` to index movies
 
 # Confirm Elasticsearch has TMDB movies
 
