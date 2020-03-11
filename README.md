@@ -13,6 +13,7 @@ cd es-docker
 docker build --tag=elasticsearch-tlre .
 cd ../kb-docker
 docker build --tag=kibana-tlre .
+cd ..
 ```
 
 ### Run containers
@@ -83,7 +84,7 @@ Once installed, grab TMDB data and index into Elasticsearch
   * Optional set-up a virtual ennvironment before install
     `python3 -m venv .`
     `source bin/activate`
-  
+
 4. Run `python3 indexTmdb.py` to index movies
 
 # Confirm Elasticsearch has TMDB movies
