@@ -1,4 +1,4 @@
-FROM docker.elastic.co/kibana/kibana:7.5.1
+FROM docker.elastic.co/kibana/kibana:7.6.2
 
-RUN ./bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/7.5.1/analyze_api_ui-7.5.1.zip
+RUN ./bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/7.6.2/analyze_api_ui-7.6.2.zip
 
