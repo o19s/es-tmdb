@@ -30,7 +30,7 @@ Browse to http://localhost:9200 and http://localhost:5601 to confirm ES / Kibana
 
 ### Elasticsearch
 
-1. Download [Elasticsearch 7.6.2](https://www.elastic.co/downloads/past-releases/elasticsearch-7-6-2)
+1. Download [Elasticsearch 7.7.0](https://www.elastic.co/downloads/past-releases/elasticsearch-7-7-0)
 2. Unzip to where you'd like to run Elasticsearch
 3. Add the following to config/elasticsearch.yml
 
@@ -40,10 +40,10 @@ http.cors.enabled: true
 indices.query.bool.max_clause_count: 10240
 ```
 
-4. Install the Elasticsearch LTR plugin for 7.6.2:
+4. Install the Elasticsearch LTR plugin for 7.7.0 (eventually available):
 
 ```
-bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.6.2.zip
+bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.7.0.zip
 ```
 
 5. Run Elasticsearch
@@ -56,14 +56,14 @@ bin/elasticsearch
 
 ### Kibana
 
-1. Download [Kibana 7.6.2](https://www.elastic.co/downloads/past-releases/kibana-7-6-2)
+1. Download [Kibana 7.7.0](https://www.elastic.co/downloads/past-releases/kibana-7-7-0)
 
 2. Unzip to where you'd like to run Kibana
 
 3. Install the matching version of the [Kibana Analyze Plugin](https://github.com/johtani/analyze-api-ui-plugin)
 
 ```
-bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/7.6.2/analyze_api_ui-7.6.2.zip
+bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/7.7.0/analyze_api_ui-7.7.0.zip
 ```
 
 4. Run Kibana
@@ -93,12 +93,12 @@ Run a [wildcard search](http://localhost:9200/tmdb/_search?q=*) and confirm you 
 
 # Postman
 
-[Postman](https://www.postman.com/) is an API development tool, that helps build, run and manage API requests. The examples from the TLRE slides exist here too as a Postman Collection (`es-TLRE-postman_collection.json`). We like using Postman becasue it makes tinkering with query parameters nicer and we think it is a useful way to follow along as you learn about tuning search relevance.
+[Postman](https://www.postman.com/) helps manage API requests. The examples from the TLRE slides exist here too as a Postman Collection (`es-TLRE-postman_collection.json`). Postman makes tinkering with query parameter easier and offers a structure way to follow along as you learn about tuning search relevance.
 
 If you want to use Postman during the TLRE class:
 
 1. Download [Postman](https://www.postman.com/downloads/) for your OS
-2. Open Postman and Import (top-menu >> File) `es-TLRE-postman_collection.json`
+2. Open Postman and Import (top-menu >> File) `es-postman_collection.json`
 3. Define a global variable (grey eye icon in the upper-right) `es-host` to point to your running Elasticsearch instance (default is `localhost:9200`)
 4. Tinker with the base URL, Params or JSON Body (optional)
 5. Press 'Send' (blue rectangle button right of URL bar)
