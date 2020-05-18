@@ -93,12 +93,12 @@ Run a [wildcard search](http://localhost:9200/tmdb/_search?q=*) and confirm you 
 
 # Postman
 
-[Postman](https://www.postman.com/) helps manage API requests. The examples from the TLRE slides exist here too as a Postman Collection (`es-TLRE-postman_collection.json`). Postman makes tinkering with query parameter easier and offers a structure way to follow along as you learn about tuning search relevance.
+[Postman](https://www.postman.com/) helps manage API requests. The examples from the TLRE slides exist here too as a Postman Collection (`es-TLRE-postman_collection.json`). Postman makes tinkering with query parameters easier and offers a structured way to follow along as you learn about tuning search relevance.
 
 If you want to use Postman during the TLRE class:
 
 1. Download [Postman](https://www.postman.com/downloads/) for your OS
-2. Open Postman and Import (top-menu >> File) `es-postman_collection.json`
+2. Open Postman and Import (top-menu >> File) `es-postman-collection.json`
 3. Define a global variable (grey eye icon in the upper-right) `es-host` to point to your running Elasticsearch instance (default is `localhost:9200`)
 4. Tinker with the base URL, Params or JSON Body (optional)
 5. Press 'Send' (blue rectangle button right of URL bar)
@@ -106,5 +106,5 @@ If you want to use Postman during the TLRE class:
 This collection is also valuable for testing examples against new versions of Elasticsearch. Using Postman's command line tool [Newman](https://github.com/postmanlabs/newman) you can check all of the requests in the collection:
 
 ```
-newman run --global-var "es_host=localhost:9200" es-TLRE-postman_collection.json
+newman run --global-var "es_host=localhost:9200" es-postman-collection.json
 ```
