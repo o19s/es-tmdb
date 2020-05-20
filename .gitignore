@@ -1,2 +1,5 @@
 tmdb.json
 *.swo
+venv/*
+.testing/testing-env
+
