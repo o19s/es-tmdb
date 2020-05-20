@@ -4,27 +4,13 @@ Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
 
 ## Using Docker
 
-### Build containers
-
-With Docker installed, build the containers as below. You only need to do this once.
-
-```
-cd es-docker
-docker build --tag=es-tlre .
-cd ../kb-docker
-docker build --tag=kb-tlre .
-cd ..
-```
-
 ### Run containers
 
 ```
 docker-compose up
 ```
 
-Browse to http://localhost:9200 and http://localhost:5601 to confirm ES / Kibana running
-
-
+Give it a second to fully boot up then browse to http://localhost:9200 and http://localhost:5601 to confirm ES / Kibanare running.
 
 ## Install Manually
 
