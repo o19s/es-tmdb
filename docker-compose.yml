@@ -1,7 +1,7 @@
 version: '2'
 services:
   kibana:
-    image: kibana-tlre
+    image: kb-tlre
     expose:
       - "5601"
     ports:
@@ -9,7 +9,7 @@ services:
     environment:
       SERVER_HOST: "0.0.0.0"
   elasticsearch:
-    image: elasticsearch-tlre
+    image: es-tlre
     ports:
      - "9200:9200"
     expose:
