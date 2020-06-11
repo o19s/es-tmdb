@@ -11,9 +11,6 @@ def indexableMovies():
             if 'release_date' in tmdbMovie and len(tmdbMovie['release_date']) > 0:
                 releaseDate = tmdbMovie['release_date'] + 'T00:00:00Z'
 
-            if movieId == '374430':
-                print(tmdbMovie['vote_count'])
-
             yield {'id': movieId,
                    'title': tmdbMovie['title'],
                    'overview': tmdbMovie['overview'],
@@ -26,7 +23,6 @@ def indexableMovies():
                    'vote_count': int(tmdbMovie['vote_count']) if 'vote_count' in tmdbMovie else 0,
                    }
         except KeyError as k: # Ignore any movies missing these attributes
-            print(k)
             continue
 
 def reindex(es, movieDict={}, schema='schema.json', index='tmdb'):
@@ -42,8 +38,6 @@ def reindex(es, movieDict={}, schema='schema.json', index='tmdb'):
                       "_id": movie['id'],
                       "_source": movie}
             yield addCmd
-            if 'title' in movie:
-                print("%s added to %s" % (movie['title'], index))
 
     elasticsearch.helpers.bulk(es, bulkDocs(movieDict), chunk_size=1)
 
