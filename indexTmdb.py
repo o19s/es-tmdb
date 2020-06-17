@@ -13,6 +13,7 @@ def indexableMovies():
 
             yield {'id': movieId,
                    'title': tmdbMovie['title'],
+                   'poster_path': 'https://image.tmdb.org/t/p/w185' + tmdbMovie['poster_path'],
                    'overview': tmdbMovie['overview'],
                    'tagline': tmdbMovie['tagline'],
                    'directors': [director['name'] for director in tmdbMovie['directors']],
