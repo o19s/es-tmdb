@@ -4,6 +4,8 @@ Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
 
 ## Using Docker
 
+Make sure you have at least 4gb of memory available for Docker, the default is 2gb. See Docker's Preferences >>> Resources-tab, to adust.
+
 ### Run containers
 
 ```
@@ -68,16 +70,28 @@ bin/kibana
 
 # Index TMDB movies
 
-Once installed, grab TMDB data and index into Elasticsearch
+Once Elasticsearch and Kibana are ready go, we need to build our example index.
 
-1. Download [tmdb.json](http://es-learn-to-rank.labs.o19s.com/tmdb.json), run `curl -o tmdb.json https://o19s-public-datasets.s3.amazonaws.com/tmdb_2020-05-20.json` 
-2. Install [Python 3.6] or greater (https://www.python.org/downloads/)
-3. Install [elasticsearch Python libraries](https://elasticsearch-py.readthedocs.io/en/master/) library, run `pip install elasticsearch`
-  * Optional set-up a virtual ennvironment before install
-    `python3 -m venv .`
-    `source bin/activate`
+1. Install [Python 3.6] or greater (https://www.python.org/downloads/)
 
-4. Run `python3 indexTmdb.py` to index movies
+2. Download [tmdb.json](http://es-learn-to-rank.labs.o19s.com/tmdb.json), run:
+
+`curl -o tmdb.json https://o19s-public-datasets.s3.amazonaws.com/tmdb_2020-05-20.json` 
+
+*Optional* Set-up a virtual ennvironment before install, run as separate lines:
+
+    `python3 -m venv venv`
+
+    `source venv/bin/activate`
+
+3. Install [elasticsearch Python libraries](https://elasticsearch-py.readthedocs.io/en/master/) library, run:
+
+`pip3 install elasticsearch`
+
+4. Index the movies finally, run:
+
+`python3 indexTmdb.py`
+
 
 # Confirm Elasticsearch has TMDB movies
 

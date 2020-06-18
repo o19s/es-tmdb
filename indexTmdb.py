@@ -39,7 +39,7 @@ def reindex(es, movieDict={}, schema='schema.json', index='tmdb'):
                       "_source": movie}
             yield addCmd
 
-    elasticsearch.helpers.bulk(es, bulkDocs(movieDict), chunk_size=5000)
+    elasticsearch.helpers.bulk(es, bulkDocs(movieDict), chunk_size=500)
 
 if __name__ == "__main__":
     from elasticsearch import Elasticsearch
