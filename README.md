@@ -26,10 +26,16 @@ http.cors.enabled: true
 indices.query.bool.max_clause_count: 10240
 ```
 
-4. Install the Elasticsearch LTR plugin for 7.6.2 (eventually available):
+4. Install the LTR plugin for 7.6.2:
 
 ```
 bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.6.2.zip
+```
+
+4b. Install the Querqy plugin for 7.6.2
+
+```
+bin/elasticsearch-plugin install -b https://repo1.maven.org/maven2/org/querqy/querqy-elasticsearch/1.2.es762.0/querqy-elasticsearch-1.2.es762.0.zip
 ```
 
 5. Run Elasticsearch
