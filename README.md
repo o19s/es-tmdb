@@ -1,5 +1,7 @@
 Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
 
+Resources to stand up an EK stack for search relevance education, with an example index of movies.
+
 # Install Elasticsearch w/ Dependencies
 
 ## Using Docker
@@ -74,15 +76,16 @@ Once Elasticsearch and Kibana are ready go, we need to build our example index.
 
 1. Install [Python 3.6] or greater (https://www.python.org/downloads/)
 
-2. Download [tmdb.json](http://es-learn-to-rank.labs.o19s.com/tmdb.json), run:
+2. Download [tmdb.json](https://o19s-public-datasets.s3.amazonaws.com/tmdb_2020-05-20.json), run:
 
 `curl -o tmdb.json https://o19s-public-datasets.s3.amazonaws.com/tmdb_2020-05-20.json` 
 
-*Optional* Set-up a virtual ennvironment before install, run as separate lines:
+*Optional* Set-up a virtual ennvironment before install python libraries, run as separate lines:
 
-    `python3 -m venv venv`
-
-    `source venv/bin/activate`
+```
+python3 -m venv venv
+source venv/bin/activate
+```
 
 3. Install [elasticsearch Python libraries](https://elasticsearch-py.readthedocs.io/en/master/) library, run:
 
