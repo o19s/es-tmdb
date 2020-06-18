@@ -1,6 +1,5 @@
 import json
 
-
 def indexableMovies():
     """ Generates TMDB movies, similar to how ES Bulk indexing
         uses a generator to generate bulk index/update actions """
@@ -40,7 +39,7 @@ def reindex(es, movieDict={}, schema='schema.json', index='tmdb'):
                       "_source": movie}
             yield addCmd
 
-    elasticsearch.helpers.bulk(es, bulkDocs(movieDict), chunk_size=1)
+    elasticsearch.helpers.bulk(es, bulkDocs(movieDict), chunk_size=5000)
 
 if __name__ == "__main__":
     from elasticsearch import Elasticsearch
