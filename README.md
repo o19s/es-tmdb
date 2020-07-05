@@ -75,9 +75,9 @@ bin/kibana
 Once Elasticsearch and Kibana are ready go, we need to build our example index.
 
 1. Install [Python 3.6] or greater (https://www.python.org/downloads/)
-2. Download <a href="https://o19s-public-datasets.s3.amazonaws.com/tmdb_2020-05-20.json" download="tmdb">tmdb.json</a>, run:
+2. Download <a download href="https://s3.amazonaws.com/es-learn-to-rank.labs.o19s.com/tmdb_2020-05-20.json">tmdb.json</a>, run:
 
-`curl -o tmdb.json https://o19s-public-datasets.s3.amazonaws.com/tmdb_2020-05-20.json` 
+`curl -o tmdb.json https://s3.amazonaws.com/es-learn-to-rank.labs.o19s.com/tmdb_2020-05-20.json` 
 
 *Optional* Set-up a virtual ennvironment before install python libraries, run as separate lines:
 
