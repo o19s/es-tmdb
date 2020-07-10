@@ -1,6 +1,14 @@
+# ES-TMDB 
+
 Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
 
 Resources to stand up an EK stack for search relevance education, with an example index of movies.
+
+## Steps to get up and running:
+- Install the software (using either Docker or installing manually)
+- Index the TMDB movie data
+- Confirm Elasticsearch has the data
+- Install Postman (optional)
 
 # Install Elasticsearch w/ Dependencies
 
