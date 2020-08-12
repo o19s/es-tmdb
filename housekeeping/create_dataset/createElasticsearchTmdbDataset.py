@@ -1,5 +1,5 @@
 from tmdbMovies import tmdbMovies
-from tmdbMovies import writeTmdbMovies
+from tmdbMovies import writeTmdbMoviesAsJSONNewLine
 
 def indexableMovies(tmdb_source_file):
     """ Generates TMDB movies, similar to how ES Bulk indexing
@@ -23,11 +23,19 @@ def indexableMovies(tmdb_source_file):
                    'vote_average': float(tmdbMovie['vote_average']) if 'vote_average' in tmdbMovie else None,
                    'vote_count': int(tmdbMovie['vote_count']) if 'vote_count' in tmdbMovie else 0,
                    }
-            addCmd = {"_index": 'tmdb',
-                      "_id": movie['id'],
-                      "_source": movie}
 
-            yield addCmd
+            addCmd = {
+                        'index':{
+                            '_index': 'tmdb',
+                            '_id': movie['id']
+                        }
+                    }
+
+            #addCmd = {"_index": 'tmdb',
+            #          "_id": movie['id'],
+            #          "_source": movie}
+
+            yield addCmd, movie
 
         except KeyError as k: # Ignore any movies missing these attributes
             continue
@@ -41,7 +49,7 @@ if __name__ == "__main__":
     tmdb_es_file = argv[2]
     #writeTmdbMovies(list(indexableMovies(tmdb_source_file=tmdb_source_file)),tmdb_solr_file)
 
-    writeTmdbMovies(list(indexableMovies(tmdb_source_file=tmdb_source_file)),tmdb_es_file)
+    writeTmdbMoviesAsJSONNewLine(list(indexableMovies(tmdb_source_file=tmdb_source_file)),tmdb_es_file)
 
     #movieDict = json.loads(open('tmdb.json').read())
     #reindex(movieDict=movieDict)

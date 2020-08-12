@@ -22,6 +22,12 @@ python3 createElasticsearchTmdbDataset.py tmdb_2020-08-10.json tmdb_es_2020-08-1
 
 4. Zip and store the file in the root directory
 
+```
+zip tmdb_es_2020-08-12.json.zip tmdb_es_2020-08-12.json
+cp ../../tmdb_es_2020-08-12.json.zip
+```
+
+
 
 https://raw.githubusercontent.com/o19s/tmdb_dump/master/tmdb_dataflows.png
 
