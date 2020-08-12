@@ -1,5 +1,5 @@
 tmdb.json
 *.swo
 venv/*
-.testing/testing-env
-
+venv
+__pycache__
