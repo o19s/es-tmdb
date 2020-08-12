@@ -1,16 +1,17 @@
-import json
+from tmdbMovies import tmdbMovies
+from tmdbMovies import writeTmdbMovies
 
-def indexableMovies():
+def indexableMovies(tmdb_source_file):
     """ Generates TMDB movies, similar to how ES Bulk indexing
         uses a generator to generate bulk index/update actions """
-    from tmdbMovies import tmdbMovies
-    for movieId, tmdbMovie in tmdbMovies():
+    for movieId, tmdbMovie in tmdbMovies(tmdb_source_file):
+        print("Formatting %s" % movieId)
         try:
             releaseDate = None
             if 'release_date' in tmdbMovie and len(tmdbMovie['release_date']) > 0:
                 releaseDate = tmdbMovie['release_date'] + 'T00:00:00Z'
 
-            yield {'id': movieId,
+            movie =  {'id': movieId,
                    'title': tmdbMovie['title'],
                    'poster_path': 'https://image.tmdb.org/t/p/w185' + tmdbMovie['poster_path'],
                    'overview': tmdbMovie['overview'],
@@ -22,34 +23,25 @@ def indexableMovies():
                    'vote_average': float(tmdbMovie['vote_average']) if 'vote_average' in tmdbMovie else None,
                    'vote_count': int(tmdbMovie['vote_count']) if 'vote_count' in tmdbMovie else 0,
                    }
+            addCmd = {"_index": 'tmdb',
+                      "_id": movie['id'],
+                      "_source": movie}
+
+            yield addCmd
+
         except KeyError as k: # Ignore any movies missing these attributes
             continue
 
-def reindex(es, movieDict={}, schema='schema.json', index='tmdb'):
-    import elasticsearch.helpers
-    settings = json.load(open(schema))
 
-    es.indices.delete(index, ignore=[400, 404])
-    es.indices.create(index, body=settings)
-
-    def bulkDocs(movieDict):
-        for movie in indexableMovies():
-            addCmd = {"_index": index,
-                      "_id": movie['id'],
-                      "_source": movie}
-            yield addCmd
-
-    elasticsearch.helpers.bulk(es, bulkDocs(movieDict), chunk_size=500)
 
 if __name__ == "__main__":
-    from elasticsearch import Elasticsearch
     from sys import argv
 
-    esUrl='http://localhost:9200'
-    schema='schema.json'
-    if len(argv) > 1:
-        schema = argv[1]
-    es = Elasticsearch(esUrl, timeout=30)
-    movieDict = json.loads(open('tmdb.json').read())
-    reindex(es, movieDict=movieDict, schema=schema)
+    tmdb_source_file = argv[1]
+    tmdb_es_file = argv[2]
+    #writeTmdbMovies(list(indexableMovies(tmdb_source_file=tmdb_source_file)),tmdb_solr_file)
 
+    writeTmdbMovies(list(indexableMovies(tmdb_source_file=tmdb_source_file)),tmdb_es_file)
+
+    #movieDict = json.loads(open('tmdb.json').read())
+    #reindex(movieDict=movieDict)
