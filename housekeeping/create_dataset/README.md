@@ -17,16 +17,17 @@ pip install -r requirements.txt
 Pass in the TMDB extract file and the name of the resulting Elasticsearch JSON file.
 
 ```
-python3 createElasticsearchTmdbDataset.py tmdb_2020-08-10.json tmdb_es_2020-08-12.json
+python3 createElasticsearchTmdbDataset.py tmdb_dump_2020-08-13.json tmdb_es.json
 ```
 
 4. Zip and store the file in the root directory
 
 ```
-zip tmdb_es_2020-08-12.json.zip tmdb_es_2020-08-12.json
-cp ../../tmdb_es_2020-08-12.json.zip
+zip tmdb_es.json.zip tmdb_es.json
+cp tmdb_es.json.zip ../../
 ```
 
+4. Don't forget to check the new zip file in!
 
 
 https://raw.githubusercontent.com/o19s/tmdb_dump/master/tmdb_dataflows.png

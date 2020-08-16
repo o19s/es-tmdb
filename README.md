@@ -103,12 +103,20 @@ Once Elasticsearch and Kibana are ready go, we need to create our example search
 curl -XPUT "http://localhost:9200/tmdb" -H 'Content-Type: application/json' --data-binary @schema.json
 ```
 
-**NATE: DO WE STORE IN REPO OR DOWNLOAD**
 
 2. Load the data:
 
+
+Unzip the `tmdb_es.json.zip` file first.
+
 ```
-curl -XPOST "http://localhost:9200/tmdb/_bulk?pretty" -H 'Content-Type: application/x-ndjson' --data-binary @tmdb_es_2020-08-122.json
+unzip tmdb_es.json.zip
+```
+
+Then send the unzipped `tmdb_es.json` into Elasticsearch.
+
+```
+curl -XPOST "http://localhost:9200/tmdb/_bulk?pretty" -H 'Content-Type: application/x-ndjson' --data-binary @tmdb_es.json
 ```
 
 # Confirm Elasticsearch has TMDB movies
