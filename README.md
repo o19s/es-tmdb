@@ -29,7 +29,7 @@ If you have [Docker](https://www.docker.com/products/docker-desktop) installed a
 
 Make sure you have at least 4gb of memory available for Docker, the default is 2gb. See Docker's Preferences >>> Resources-tab, to adjust.
 
-### Run containers
+Linux/Windows:
 
 ```
 docker-compose up
@@ -53,8 +53,16 @@ indices.query.bool.max_clause_count: 10240
 
 4. Install the LTR plugin for 7.6.2:
 
+Linux:
+
 ```
 bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.6.2.zip
+```
+
+Windows:
+
+```
+bin\elasticsearch-plugin.bat install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.6.2.zip
 ```
 
 5. Install the Querqy plugin for 7.6.2
@@ -95,28 +103,28 @@ bin/kibana
 
 Once Elasticsearch and Kibana are ready go, we need to create our example search index.
 
-
-
-1. Create the search index schema:
-
-```
-curl -XPUT "http://localhost:9200/tmdb" -H 'Content-Type: application/json' --data-binary @schema.json
-```
-
-
-2. Load the data:
-
+1. Load the data:
 
 Unzip the `tmdb_es.json.zip` file first.
+
+Linux/Windows:
 
 ```
 unzip tmdb_es.json.zip
 ```
 
-Then send the unzipped `tmdb_es.json` into Elasticsearch.
+2. Index the data into Elasticsearch
+
+Linux:
 
 ```
-curl -XPOST "http://localhost:9200/tmdb/_bulk?pretty" -H 'Content-Type: application/x-ndjson' --data-binary @tmdb_es.json
+./index.sh
+```
+
+Windows:
+
+```
+powershell index.ps1
 ```
 
 # Confirm Elasticsearch has TMDB movies
