@@ -1,5 +1,8 @@
 tmdb.json
 *.swo
 venv/*
-.testing/testing-env
-
+venv
+__pycache__
+.DS*
+housekeeping/create_dataset/tmdb_es.json
+housekeeping/create_dataset/tmdb_es.json.zip
