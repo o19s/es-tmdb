@@ -11,15 +11,9 @@ This repository is part of the _Think Like a Relevancy Engineer_ training provid
 
 # Download this repo
 
-Download the zip from https://github.com/o19s/es-tmdb/archive/master.zip
+Download the zip from https://github.com/o19s/es-tmdb/archive/master.zip, and you will get the file es-tmdb-master.zip. Unzip this file, resulting in the directory es-tmdb-master.
 
-or clone it:
-
-```
-git clone https://github.com/o19s/es-tmdb.git
-```
-
-After you have this repo, change into the newly created directory.
+After you have this download, change into the newly created directory.
 
 # Install Elasticsearch w/ Dependencies
 
