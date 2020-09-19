@@ -81,11 +81,16 @@ Once Elasticsearch and Kibana are ready go, we need to create our example search
 
 Unzip the `tmdb_es.json.zip` file first.
 
-Linux/Windows:
+Linux:
 
 ```
 unzip tmdb_es.json.zip
 ```
+
+Windows:
+
+Use Explorer and run _Extract all_ command.  Then move the `./tmdb_es.json/tmdb_es.json` file
+up to root of the download project, next to the `schema.json` and `index.ps1` files.
 
 2. Index the data into Elasticsearch
 
@@ -100,6 +105,8 @@ Windows:
 ```
 powershell index.ps1
 ```
+
+If you don't have admin permissions to run PowerShell scripts, then open up the PowerShell ISE application as an administrator.  Then switch to the downloaded code directory and cut and paste the contents of `index.ps1` into the console to work around this issue.
 
 # Confirm Elasticsearch has TMDB movies
 
