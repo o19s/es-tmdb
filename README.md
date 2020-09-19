@@ -45,33 +45,13 @@ http.cors.enabled: true
 indices.query.bool.max_clause_count: 10240
 ```
 
-4. Install the LTR plugin for 7.6.2:
-
-Linux:
-
-```
-bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.6.2.zip
-```
-
-Windows:
-
-```
-bin\elasticsearch-plugin.bat install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.6.2.zip
-```
-
-5. Install the Querqy plugin for 7.6.2
-
-```
-bin/elasticsearch-plugin install -b https://repo1.maven.org/maven2/org/querqy/querqy-elasticsearch/1.2.es762.0/querqy-elasticsearch-1.2.es762.0.zip
-```
-
-6. Run Elasticsearch
+4. Run Elasticsearch
 
 ```
 bin/elasticsearch
 ```
 
-7. In your browser, navigate to [http://localhost:9200](http://localhost:9200) to confirm Elasticsearch is running
+5. In your browser, navigate to [http://localhost:9200](http://localhost:9200) to confirm Elasticsearch is running
 
 ### Kibana
 
