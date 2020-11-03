@@ -1,4 +1,4 @@
-tmdb.json
+tmdb_es.json
 *.swo
 venv/*
 venv
