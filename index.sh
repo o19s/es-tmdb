@@ -1,4 +1,7 @@
 #!/bin/bash
+if [ ! -f ./tmdb_es.json ]; then
+  unzip tmdb_es.json.zip
+fi
 
 curl -XDELETE "http://localhost:9200/tmdb";
 
