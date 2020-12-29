@@ -22,6 +22,7 @@ def indexableMovies(tmdb_source_file):
                    'release_date': releaseDate,
                    'vote_average': float(tmdbMovie['vote_average']) if 'vote_average' in tmdbMovie else None,
                    'vote_count': int(tmdbMovie['vote_count']) if 'vote_count' in tmdbMovie else 0,
+                   'revenue': int(tmdbMovie['revenue'] if 'revenue' in tmdbMovie else 0),
                    }
 
             addCmd = {
