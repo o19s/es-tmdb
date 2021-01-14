@@ -369,9 +369,7 @@
             "english_possessive_stem",
             "syn_directed",
             "english_stop",
-            "english_keywords",
-            "english_stem",
-            "custom_stems_override"
+            "english_stem"
           ]
         },        
         "my_english2": {

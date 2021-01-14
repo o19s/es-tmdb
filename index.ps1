@@ -1,5 +1,9 @@
 # PowerShell script for Windows 10 and above to index the TMDB JSON file.
 
+if (-not (Test-Path -Path '.\tmdb_es.json')) {
+  Expand-Archive -LiteralPath tmdb_es.json.zip -DestinationPath ./
+}
+
 $schema = Get-Content 'schema.json';
 $data = Get-Content -Raw 'tmdb_es.json';
 

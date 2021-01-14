@@ -77,7 +77,6 @@ bin/kibana
 
 Once Elasticsearch and Kibana are ready go, we need to create our example search index.
 
-1. Load the data:
 
 Unzip the `tmdb_es.json.zip` file first.
 
@@ -93,6 +92,7 @@ Use Explorer and run _Extract all_ command.  Then move the `./tmdb_es.json/tmdb_
 up to root of the download project, next to the `schema.json` and `index.ps1` files.
 
 2. Index the data into Elasticsearch
+
 
 Linux:
 
