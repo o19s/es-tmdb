@@ -45,33 +45,13 @@ http.cors.enabled: true
 indices.query.bool.max_clause_count: 10240
 ```
 
-4. Install the LTR plugin for 7.6.2:
-
-Linux:
-
-```
-bin/elasticsearch-plugin install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.6.2.zip
-```
-
-Windows:
-
-```
-bin\elasticsearch-plugin.bat install -b http://es-learn-to-rank.labs.o19s.com/ltr-1.2.1-es7.6.2.zip
-```
-
-5. Install the Querqy plugin for 7.6.2
-
-```
-bin/elasticsearch-plugin install -b https://repo1.maven.org/maven2/org/querqy/querqy-elasticsearch/1.2.es762.0/querqy-elasticsearch-1.2.es762.0.zip
-```
-
-6. Run Elasticsearch
+4. Run Elasticsearch
 
 ```
 bin/elasticsearch
 ```
 
-7. In your browser, navigate to [http://localhost:9200](http://localhost:9200) to confirm Elasticsearch is running
+5. In your browser, navigate to [http://localhost:9200](http://localhost:9200) to confirm Elasticsearch is running
 
 ### Kibana
 
@@ -98,7 +78,21 @@ bin/kibana
 Once Elasticsearch and Kibana are ready go, we need to create our example search index.
 
 
-1. Index the data into Elasticsearch
+Unzip the `tmdb_es.json.zip` file first.
+
+Linux:
+
+```
+unzip tmdb_es.json.zip
+```
+
+Windows:
+
+Use Explorer and run _Extract all_ command.  Then move the `./tmdb_es.json/tmdb_es.json` file
+up to root of the download project, next to the `schema.json` and `index.ps1` files.
+
+2. Index the data into Elasticsearch
+
 
 Linux:
 
@@ -111,6 +105,8 @@ Windows:
 ```
 powershell index.ps1
 ```
+
+If you don't have admin permissions to run PowerShell scripts, then open up the PowerShell ISE application as an administrator.  Then switch to the downloaded code directory and cut and paste the contents of `index.ps1` into the console to work around this issue.
 
 # Confirm Elasticsearch has TMDB movies
 
