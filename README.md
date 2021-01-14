@@ -77,23 +77,6 @@ bin/kibana
 
 Once Elasticsearch and Kibana are ready go, we need to create our example search index.
 
-
-Unzip the `tmdb_es.json.zip` file first.
-
-Linux:
-
-```
-unzip tmdb_es.json.zip
-```
-
-Windows:
-
-Use Explorer and run _Extract all_ command.  Then move the `./tmdb_es.json/tmdb_es.json` file
-up to root of the download project, next to the `schema.json` and `index.ps1` files.
-
-2. Index the data into Elasticsearch
-
-
 Linux:
 
 ```
@@ -114,7 +97,9 @@ Run a [wildcard search](http://localhost:9200/tmdb/_search?q=*) and confirm you 
 
 # Postman
 
-[Postman](https://www.postman.com/) helps manage API requests. The examples from the TLRE slides exist here too as a Postman Collection (`es-postman-collection.json`). We like using Postman because it makes tinkering with query parameters nicer and we think it is a useful way to follow along as you learn about tuning search relevance.
+[Postman](https://www.postman.com/) helps manage API requests. The examples from the TLRE slides exist here too as a Postman Collection (`es-postman-collection.json`). We like using Postman because it makes tinkering with query parameters nicer.
+
+We will mainly Kibana's DevTools for tinkering, but if you already familiar with Postman you can use that and get similar milage.
 
 If you want to use Postman during the TLRE class:
 
@@ -122,4 +107,4 @@ If you want to use Postman during the TLRE class:
 2. Open Postman and Import (top-menu >> File) `es-postman-collection.json`
 3. Define a global variable (grey eye icon in the upper-right) `es_host` to point to your running Elasticsearch instance (default is `localhost:9200`)
 4. Tinker with the base URL, Params or JSON Body (optional)
-5. Press 'Send' (blue rectangle button right of URL bar)
+5. Press 'Send' (blue rectangle button right of URL bar) to Search!
