@@ -51,7 +51,7 @@
           "text_std",
           "text_all",
           "text_people",
-          "text_people_max",            
+          "text_people_max",
           "text_people2",
           "text_people_notf",
           "text_std_gr_idx_syn",
@@ -320,7 +320,7 @@
          "max_shingle_size": 2,
          "min_shingle_size": 2,
          "output_unigrams": false
-        }          
+        }
       },
       "analyzer": {
         "names": {
@@ -371,7 +371,7 @@
             "english_stop",
             "english_stem"
           ]
-        },        
+        },
         "my_english2": {
           "type": "custom",
           "char_filter": [
@@ -494,7 +494,8 @@
           "b": 1.0
         }
       },
-      "number_of_shards": 1
+      "number_of_shards": 1,
+      "number_of_replicas": 0
     }
   }
 }
