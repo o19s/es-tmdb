@@ -77,7 +77,7 @@ bin/kibana
 
 Once Elasticsearch and Kibana are ready go, we need to create our example search index.
 
-Linux:
+Linux/Mac:
 
 ```
 ./index.sh
