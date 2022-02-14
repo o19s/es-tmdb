@@ -23,7 +23,7 @@ If you have [Docker](https://www.docker.com/products/docker-desktop) installed a
 
 Make sure you have at least 4gb of memory available for Docker, the default is 2gb. See Docker's Preferences >>> Resources-tab, to adjust.
 
-Linux/Windows:
+Linux/Windows/Mac:
 
 ```
 docker-compose up
