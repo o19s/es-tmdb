@@ -35,7 +35,7 @@ Give it a minute to fully boot up then use a browser to go to http://localhost:9
 
 ### Elasticsearch
 
-1. Download [Elasticsearch 7.6.2](https://www.elastic.co/downloads/past-releases/elasticsearch-7-6-2)
+1. Download [Elasticsearch 7.16.2](https://www.elastic.co/downloads/past-releases/elasticsearch-7-16-2)
 2. Unzip to where you'd like to run Elasticsearch
 3. Add the following to config/elasticsearch.yml
 
@@ -55,7 +55,7 @@ bin/elasticsearch
 
 ### Kibana
 
-1. Download [Kibana 7.6.2](https://www.elastic.co/downloads/past-releases/kibana-7-6-2)
+1. Download [Kibana 7.16.2](https://www.elastic.co/downloads/past-releases/kibana-7-16-2)
 
 2. Unzip to where you'd like to run Kibana
 
