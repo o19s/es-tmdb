@@ -1,4 +1,4 @@
-Elasticsearch Index for the [The Movie Database](http://themoviedb.com).
+Elasticsearch Index for the [The Movie Database](https://www.themoviedb.org/).
 
 This repository is part of the _Think Like a Relevancy Engineer_ training provided by [OpenSource Connections](https://opensourceconnections.com/events/training/).
 
