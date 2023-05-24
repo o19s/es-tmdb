@@ -1209,6 +1209,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "5-Lab query rewriting with Querqy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"class\": \"querqy.elasticsearch.rewriter.SimpleCommonRulesRewriterFactory\",\n   \"config\": {\n       \"rules\": \"action =>\\nUP(100): * {\\\"term\\\": {\\\"genres\\\": \\\"action\\\"}}\"\n   }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es_host}}/_querqy/rewriter/common_rules",
+					"host": [
+						"{{es_host}}"
+					],
+					"path": [
+						"_querqy",
+						"rewriter",
+						"common_rules"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
