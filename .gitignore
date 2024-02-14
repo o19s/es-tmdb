@@ -7,3 +7,4 @@ __pycache__
 housekeeping/create_dataset/tmdb_es.json
 housekeeping/create_dataset/tmdb_es.json.zip
 .idea/
+tmdb_dump_2020-12-29.json
