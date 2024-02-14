@@ -35,7 +35,7 @@ Give it a minute to fully boot up then use a browser to go to http://localhost:9
 
 ### Elasticsearch
 
-1. Download [Elasticsearch 7.16.2](https://www.elastic.co/downloads/past-releases/elasticsearch-7-16-2)
+1. Download [Elasticsearch 8.9.2](https://www.elastic.co/downloads/past-releases/elasticsearch-8-9-2)
 2. Unzip to where you'd like to run Elasticsearch
 3. Add the following to config/elasticsearch.yml
 
@@ -53,19 +53,23 @@ bin/elasticsearch
 
 5. In your browser, navigate to [http://localhost:9200](http://localhost:9200) to confirm Elasticsearch is running
 
+6. Install the plugins for LTR and Querqy
+
+```
+bin/elasticsearch-plugin install -b "https://github.com/o19s/elasticsearch-learning-to-rank/releases/download/v1.5.8-es8.9.2/ltr-plugin-v1.5.8-es8.9.2.zip"
+```
+
+```
+bin/elasticsearch-plugin install -b "https://repo1.maven.org/maven2/org/querqy/querqy-elasticsearch/1.7.es892.0/querqy-elasticsearch-1.7.es892.0.zip"
+```
+
 ### Kibana
 
-1. Download [Kibana 7.16.2](https://www.elastic.co/downloads/past-releases/kibana-7-16-2)
+1. Download [Kibana 8.9.2](https://www.elastic.co/downloads/past-releases/kibana-8-9-2)
 
 2. Unzip to where you'd like to run Kibana
 
-3. Install the matching version of the [Kibana Analyze Plugin](https://github.com/johtani/analyze-api-ui-plugin)
-
-```
-bin/kibana-plugin install https://github.com/johtani/analyze-api-ui-plugin/releases/download/7.16.2/analyzeApiUi-7.16.2.zip
-```
-
-4. Run Kibana
+3. Run Kibana
 
 ```
 bin/kibana
